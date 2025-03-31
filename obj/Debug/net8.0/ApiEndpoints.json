@@ -27,7 +27,7 @@
   },
   {
     "ContainingType": "NZWalks.Api.Controllers.RegionsController",
-    "Method": "update",
+    "Method": "Update",
     "RelativePath": "api/Regions/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
