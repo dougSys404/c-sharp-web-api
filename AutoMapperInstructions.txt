@@ -1,0 +1,14 @@
+Instalation by NuGet.
+
+1º - Right click on "Dependences"
+2º - Click on Manage NuGet Packages
+3º - Browse for Automapper
+4º - Select "Automapper" by Jimmy Bogard
+5º - Click on ""Install"
+
+
+On the code, you have to create mapping profiles for the models
+
+Create a folder inside the project called Mapping
+
+Create a class called AutoMapperProfiles
