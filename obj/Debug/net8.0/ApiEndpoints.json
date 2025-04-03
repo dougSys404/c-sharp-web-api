@@ -79,13 +79,19 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "NZWalks.Api.Controllers.StudentsController",
-    "Method": "getAll",
-    "RelativePath": "api/Students",
-    "HttpMethod": "GET",
+    "ContainingType": "NZWalks.Api.Controllers.WalksController",
+    "Method": "create",
+    "RelativePath": "api/Walks",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "addWalkRequestDto",
+        "Type": "NZWalks.Api.Model.DTO.AddWalkRequestDto",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]
