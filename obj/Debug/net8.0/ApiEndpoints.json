@@ -80,6 +80,16 @@
   },
   {
     "ContainingType": "NZWalks.Api.Controllers.WalksController",
+    "Method": "getAll",
+    "RelativePath": "api/Walks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NZWalks.Api.Controllers.WalksController",
     "Method": "create",
     "RelativePath": "api/Walks",
     "HttpMethod": "POST",

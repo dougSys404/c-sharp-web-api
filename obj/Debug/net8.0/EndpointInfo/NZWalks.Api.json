@@ -133,6 +133,16 @@
       }
     },
     "/api/Walks": {
+      "get": {
+        "tags": [
+          "Walks"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "post": {
         "tags": [
           "Walks"
