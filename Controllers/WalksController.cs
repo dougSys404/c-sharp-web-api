@@ -56,13 +56,20 @@ namespace NZWalks.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddWalkRequestDto addWalkRequestDto)
         {
-            // Map DTO to Domain Model
-            var walkDomainModel = mapper.Map<Walk>(addWalkRequestDto);
+            if (ModelState.IsValid)
+            {
+                // Map DTO to Domain Model
+                var walkDomainModel = mapper.Map<Walk>(addWalkRequestDto);
 
-            await walkRepository.CreateAsync(walkDomainModel);
+                await walkRepository.CreateAsync(walkDomainModel);
 
-            // map domain model to DTO
-            return Ok(mapper.Map<WalkDto>(walkDomainModel));
+                // map domain model to DTO
+                return Ok(mapper.Map<WalkDto>(walkDomainModel));
+            }
+            else
+            {
+                return BadRequest();
+            }
 
         }
 
@@ -73,17 +80,24 @@ namespace NZWalks.Api.Controllers
 
         public async Task<IActionResult> Update([FromRoute] Guid Id, [FromBody] UpdateWalkRequestDto updateWalkRequestDto)
         {
-            var walkDomainModel = mapper.Map<Walk>(updateWalkRequestDto);
-
-            await walkRepository.UpdateAsync(Id, walkDomainModel);
-
-            if (walkDomainModel == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
-            }
+                var walkDomainModel = mapper.Map<Walk>(updateWalkRequestDto);
 
-            // map domain model to DTO
-            return Ok(mapper.Map<WalkDto>(walkDomainModel));
+                await walkRepository.UpdateAsync(Id, walkDomainModel);
+
+                if (walkDomainModel == null)
+                {
+                    return NotFound();
+                }
+
+                // map domain model to DTO
+                return Ok(mapper.Map<WalkDto>(walkDomainModel));
+            } 
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // deleting and existing resource by id

@@ -59,8 +59,10 @@ namespace NZWalks.Api.Controllers
 
         // create new region resource
         [HttpPost]
-        public async Task<IActionResult> create([FromBody] AddRregioRequestDto addRregioRequestDto)
+        public async Task<IActionResult> Create([FromBody] AddRregioRequestDto addRregioRequestDto)
         {
+            if (ModelState.IsValid) { 
+
             // Map or convert DTO to domain model
             var regionDomainModel = mapper.Map<Region>(addRregioRequestDto);
 
@@ -71,6 +73,11 @@ namespace NZWalks.Api.Controllers
             var regionDto = mapper.Map<RegionsDto>(regionDomainModel);
 
             return CreatedAtAction(nameof(getById), new {id = regionDomainModel.Id}, regionDto);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // update an existing resource
@@ -78,27 +85,34 @@ namespace NZWalks.Api.Controllers
         [Route("{id:Guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateRegionRequestDto updateRegionRequestDto) 
         {
-            // Mapping dto do domain model
-            var regionDomainModel = mapper.Map<Region>(updateRegionRequestDto);
-
-            // Check if region exists
-            regionDomainModel = await regionRepository.UpdateAsync(id, regionDomainModel);
-
-            if (regionDomainModel == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                // Mapping dto do domain model
+                var regionDomainModel = mapper.Map<Region>(updateRegionRequestDto);
+
+                // Check if region exists
+                regionDomainModel = await regionRepository.UpdateAsync(id, regionDomainModel);
+
+                if (regionDomainModel == null)
+                {
+                    return NotFound();
+                }
+
+                // Map DTO to domain model
+
+                regionDomainModel.Code = updateRegionRequestDto.Code;
+                regionDomainModel.Name = updateRegionRequestDto.Name;
+                regionDomainModel.RegionImageUrl = updateRegionRequestDto.RegionImageUrl;
+
+                await dbContext.SaveChangesAsync();
+
+                // convert and return domain model to DTO
+                return Ok(mapper.Map<RegionsDto>(regionDomainModel));
             }
-
-            // Map DTO to domain model
-
-            regionDomainModel.Code = updateRegionRequestDto.Code;
-            regionDomainModel.Name = updateRegionRequestDto.Name;
-            regionDomainModel.RegionImageUrl = updateRegionRequestDto.RegionImageUrl;
-
-            await dbContext.SaveChangesAsync();
-
-            // convert and return domain model to DTO
-            return Ok(mapper.Map<RegionsDto>(regionDomainModel));
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // delete a single region
