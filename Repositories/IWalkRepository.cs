@@ -1,10 +1,12 @@
-﻿using NZWalks.Api.Model.Domain;
+﻿using Microsoft.AspNetCore.Mvc;
+using NZWalks.Api.Model.Domain;
 
 namespace NZWalks.Api.Repositories
 {
     public interface IWalkRepository
     {
-        Task<List<Walk>> GetAllAsync(string? filterOn = null, string? filterQuery = null);
+        Task<List<Walk>> GetAllAsync(string? filterOn = null, string? filterQuery = null
+            ,string? sortBy = null, bool isAcending = true);
         
         Task<Walk?> GetByIdAsync(Guid id);
 
