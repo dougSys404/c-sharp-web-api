@@ -32,3 +32,4 @@ C:\Users\douglas\Desktop\c-sharp projects\webApi\NZWalks\NzWalks.UI\obj\Debug\ne
 C:\Users\douglas\Desktop\c-sharp projects\webApi\NZWalks\NzWalks.UI\obj\Debug\net8.0\NzWalks.UI.pdb
 C:\Users\douglas\Desktop\c-sharp projects\webApi\NZWalks\NzWalks.UI\obj\Debug\net8.0\NzWalks.UI.genruntimeconfig.cache
 C:\Users\douglas\Desktop\c-sharp projects\webApi\NZWalks\NzWalks.UI\obj\Debug\net8.0\ref\NzWalks.UI.dll
+C:\Users\douglas\Desktop\c-sharp projects\webApi\NZWalks\NzWalks.UI\obj\Debug\net8.0\NzWalks.UI.sourcelink.json
