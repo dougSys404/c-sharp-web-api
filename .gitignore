@@ -1,1 +1,28 @@
+# Ignore arquivos de build
+bin/
+obj/
+
+# Ignore arquivos do Visual Studio
 .vs/
+*.user
+*.suo
+
+# Ignore arquivos de log
+*.log
+Logs/
+
+# Ignore arquivos temporários
+*.tmp
+*.temp
+
+# Ignore arquivos gerados pelo build do Razor
+**/Debug/
+**/Release/
+
+# Ignore arquivos do sistema
+Thumbs.db
+.DS_Store
+
+# Arquivos gerados pelo Rider/ReSharper (caso use)
+.idea/
+*.DotSettings.user
